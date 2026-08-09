@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Dr. Akanksha Srivastava | Homeopathy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+
+  <style>
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Poppins', Arial, sans-serif; background: #f0f7f4; color: #333; }
+
+    /* --- Navigation --- */
+    nav {
+      background: #1b4332;
+      padding: 16px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .logo {
+      font-family: 'Dancing Script', cursive;
+      color: #95d5b2;
+      font-size: 28px;
+    }
+    nav ul { list-style: none; display: flex; gap: 24px; }
+    nav ul li a {
+      color: #ccc;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      transition: color 0.3s;
+    }
+    nav ul li a:hover { color: #95d5b2; }
+
+    /* --- Hero --- */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero {
+      background: linear-gradient(135deg, #1b4332, #2d6a4f, #40916c);
+      text-align: center;
+      padding: 80px 20px;
+      animation: fadeInUp 1s ease;
+    }
+    .hero h1 {
+      font-size: 46px;
+      color: #ffffff;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+    .hero h1 span {
+      font-family: 'Dancing Script', cursive;
+      color: #95d5b2;
+      font-size: 52px;
+    }
+    .hero p {
+      font-size: 18px;
+      color: #d8f3dc;
+      margin-bottom: 10px;
+    }
+    .hero .tagline {
+      font-size: 15px;
+      color: #b7e4c7;
+      margin-bottom: 32px;
+      font-style: italic;
+    }
+    .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: #95d5b2;
+      color: #1b4332;
+      padding: 14px 32px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 700;
+      transition: transform 0.3s, box-shadow 0.3s;
+      display: inline-block;
+    }
+    .btn-primary:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 25px rgba(149,213,178,0.4);
+    }
+    .btn-secondary {
+      background: transparent;
+      color: #95d5b2;
+      padding: 14px 32px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 700;
+      border: 2px solid #95d5b2;
+      transition: all 0.3s;
+      display: inline-block;
+    }
+    .btn-secondary:hover {
+      background: #95d5b2;
+      color: #1b4332;
+    }
+
+    /* --- Stats Bar --- */
+    .stats {
+      background: #1b4332;
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      padding: 20px 32px;
+      flex-wrap: wrap;
+    }
+    .stat { text-align: center; }
+    .stat-num { font-size: 26px; font-weight: 700; color: #95d5b2; }
+    .stat-label { font-size: 12px; color: #b7e4c7; letter-spacing: 1px; }
+
+    /* --- Section Title --- */
+    .section-title {
+      text-align: center;
+      font-size: 30px;
+      font-weight: 700;
+      color: #1b4332;
+      margin-bottom: 10px;
+    }
+    .section-sub {
+      text-align: center;
+      font-size: 14px;
+      color: #777;
+      margin-bottom: 36px;
+    }
+
+    /* --- About --- */
+    .about {
+      padding: 60px 32px;
+      background: white;
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .about-icon {
+      background: linear-gradient(135deg, #d8f3dc, #b7e4c7);
+      border-radius: 20px;
+      padding: 40px;
+      text-align: center;
+      font-size: 90px;
+    }
+    .about-text h3 {
+      font-size: 22px;
+      color: #1b4332;
+      margin-bottom: 14px;
+      font-weight: 700;
+    }
+    .about-text p {
+      font-size: 14px;
+      color: #555;
+      line-height: 1.8;
+      margin-bottom: 12px;
+    }
+    .badge {
+      display: inline-block;
+      background: #d8f3dc;
+      color: #1b4332;
+      padding: 5px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      margin: 4px 4px 4px 0;
+    }
+
+    /* --- Diseases --- */
+    .diseases {
+      padding: 60px 32px;
+      background: #f0f7f4;
+    }
+    .disease-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .disease-card {
+      background: white;
+      border-radius: 14px;
+      padding: 22px;
+      text-align: center;
+      border: 1px solid #d8f3dc;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .disease-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 30px rgba(27,67,50,0.1);
+    }
+    .disease-card .icon { font-size: 36px; margin-bottom: 10px; }
+    .disease-card h4 { font-size: 15px; color: #1b4332; font-weight: 600; margin-bottom: 6px; }
+    .disease-card p { font-size: 12px; color: #777; line-height: 1.6; }
+
+    /* --- Appointment --- */
+    .appointment {
+      padding: 60px 32px;
+      background: white;
+    }
+    .appt-box {
+      background: linear-gradient(135deg, #1b4332, #2d6a4f);
+      border-radius: 20px;
+      padding: 40px;
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .appt-box h3 {
+      color: #95d5b2;
+      font-size: 24px;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+    .appt-box p {
+      color: #b7e4c7;
+      font-size: 14px;
+      margin-bottom: 24px;
+    }
+    .appt-box input,
+    .appt-box select,
+    .appt-box textarea {
+      width: 100%;
+      padding: 12px 16px;
+      margin-bottom: 14px;
+      border: none;
+      border-radius: 10px;
+      font-size: 14px;
+      font-family: 'Poppins', sans-serif;
+      background: rgba(255,255,255,0.1);
+      color: white;
+      border: 1px solid rgba(149,213,178,0.3);
+    }
+    .appt-box input::placeholder,
+    .appt-box textarea::placeholder { color: #b7e4c7; }
+    .appt-box select option { color: #333; background: white; }
+    .appt-box textarea { height: 90px; resize: none; }
+    .appt-box button {
+      width: 100%;
+      background: #95d5b2;
+      color: #1b4332;
+      padding: 14px;
+      border: none;
+      border-radius: 30px;
+      font-size: 16px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .appt-box button:hover {
+      transform: scale(1.02);
+      box-shadow: 0 8px 25px rgba(149,213,178,0.3);
+    }
+    #appt-success {
+      display: none;
+      background: #d8f3dc;
+      color: #1b4332;
+      padding: 14px;
+      border-radius: 10px;
+      margin-top: 14px;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    /* --- Testimonials --- */
+    .testimonials {
+      padding: 60px 32px;
+      background: #f0f7f4;
+    }
+    .review-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .review-card {
+      background: white;
+      border-radius: 14px;
+      padding: 22px;
+      border: 1px solid #d8f3dc;
+    }
+    .stars { color: #f4a261; font-size: 16px; margin-bottom: 10px; }
+    .review-text { font-size: 13px; color: #555; line-height: 1.7; margin-bottom: 14px; font-style: italic; }
+    .reviewer { font-size: 13px; font-weight: 600; color: #1b4332; }
+
+    /* --- WhatsApp Float Button --- */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #25d366;
+      color: white;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.5);
+      transition: transform 0.3s;
+      z-index: 999;
+    }
+    .whatsapp-float:hover { transform: scale(1.1); }
+
+    /* --- Footer --- */
+    footer {
+      background: #1b4332;
+      color: #b7e4c7;
+      text-align: center;
+      padding: 24px;
+      font-size: 13px;
+      letter-spacing: 1px;
+    }
+
+    /* --- Mobile --- */
+    @media (max-width: 600px) {
+      nav { flex-direction: column; gap: 12px; padding: 16px; }
+      nav ul { gap: 14px; }
+      .hero h1 { font-size: 28px; }
+      .hero h1 span { font-size: 32px; }
+      .stats { gap: 24px; }
+      .about-grid { grid-template-columns: 1fr; }
+      .disease-grid { grid-template-columns: 1fr 1fr; }
+      .review-grid { grid-template-columns: 1fr; }
+      .appt-box { padding: 24px 16px; }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="logo">Dr. Akanksha</div>
+    <ul>
+      <li><a href="#about">ABOUT</a></li>
+      <li><a href="#diseases">DISEASES</a></li>
+      <li><a href="#appointment">APPOINTMENT</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <div class="hero">
+    <h1>Welcome to<br><span>Dr. Akanksha Srivastava</span></h1>
+    <p>BHMS | Homeopathy Consultant</p>
+    <p class="tagline">"Healing naturally, living better"</p>
+    <div class="hero-btns">
+      <a href="#appointment" class="btn-primary">Book Appointment</a>
+      <a href="#diseases" class="btn-secondary">View Treatments</a>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats">
+    <div class="stat"><div class="stat-num">500+</div><div class="stat-label">PATIENTS TREATED</div></div>
+    <div class="stat"><div class="stat-num">5+</div><div class="stat-label">YEARS EXPERIENCE</div></div>
+    <div class="stat"><div class="stat-num">20+</div><div class="stat-label">DISEASES TREATED</div></div>
+    <div class="stat"><div class="stat-num">100%</div><div class="stat-label">NATURAL TREATMENT</div></div>
+  </div>
+
+  <!-- About -->
+  <div class="about" id="about">
+    <div class="section-title">About the Doctor</div>
+    <div class="section-sub">Experienced homeopath dedicated to natural healing</div>
+    <div class="about-grid">
+      <div class="about-icon">👩‍⚕️</div>
+      <div class="about-text">
+        <h3>Dr. Akanksha Srivastava</h3>
+        <p>Dr. Akanksha Srivastava is a qualified homeopathy consultant with years of experience treating chronic and acute conditions using 100% natural remedies.</p>
+        <p>She believes in treating the root cause of illness, not just the symptoms — giving patients long-lasting relief without side effects.</p>
+        <span class="badge">BHMS Certified</span>
+        <span class="badge">Online Consultations</span>
+        <span class="badge">Hindi & English</span>
+        <span class="badge">No Side Effects</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Diseases -->
+  <div class="diseases" id="diseases">
+    <div class="section-title">Diseases We Treat</div>
+    <div class="section-sub">Natural homeopathic treatment for a wide range of conditions</div>
+    <div class="disease-grid">
+
+      <div class="disease-card">
+        <div class="icon">🌸</div>
+        <h4>PCOD / PCOS</h4>
+        <p>Hormonal balance through natural remedies with no side effects</p>
+      </div>
+
+      <div class="disease-card">
+        <div class="icon">🤧</div>
+        <h4>Allergies & Asthma</h4>
+        <p>Long term relief from respiratory problems and skin allergies</p>
+      </div>
+
+      <div class="disease-card">
+        <div class="icon">🧠</div>
+        <h4>Migraine</h4>
+        <p>Effective treatment for chronic headaches and migraines</p>
+      </div>
+
+      <div class="disease-card">
+        <div class="icon">🦴</div>
+        <h4>Arthritis</h4>
+        <p>Natural pain relief for joint pain and inflammation</p>
+      </div>
+
+      <div class="disease-card">
+        <div class="icon">😰</div>
+        <h4>Anxiety & Stress</h4>
+        <p>Gentle remedies for mental wellness and emotional balance</p>
+      </div>
+
+      <div class="disease-card">
+        <div class="icon">🌿</div>
+        <h4>Skin Problems</h4>
+        <p>Treatment for eczema, psoriasis and other skin conditions</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Appointment -->
+  <div class="appointment" id="appointment">
+    <div class="section-title">Book an Appointment</div>
+    <div class="section-sub">Online consultation available — book your slot today</div>
+    <div class="appt-box">
+      <h3>📅 Book Your Consultation</h3>
+      <p>Fill the form below and we will confirm your slot on WhatsApp</p>
+      <input type="text" id="pt-name" placeholder="Your Full Name">
+      <input type="tel" id="pt-phone" placeholder="Your WhatsApp Number">
+      <input type="number" id="pt-age" placeholder="Your Age">
+      <select id="pt-disease">
+        <option value="" disabled selected>Select Your Problem</option>
+        <option>PCOD / PCOS</option>
+        <option>Allergies & Asthma</option>
+        <option>Migraine</option>
+        <option>Arthritis</option>
+        <option>Anxiety & Stress</option>
+        <option>Skin Problems</option>
+        <option>Other</option>
+      </select>
+      <textarea id="pt-msg" placeholder="Briefly describe your symptoms..."></textarea>
+      <button onclick="bookAppointment()">📲 Book Appointment on WhatsApp</button>
+      <div id="appt-success">✅ Redirecting to WhatsApp... Dr. Akanksha will confirm your slot shortly!</div>
+    </div>
+  </div>
+
+  <!-- Testimonials -->
+  <div class="testimonials">
+    <div class="section-title">What Patients Say</div>
+    <div class="section-sub">Real stories from real patients</div>
+    <div class="review-grid">
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <div class="review-text">"Dr. Akanksha treated my PCOD naturally. After 3 months of treatment I feel so much better. Highly recommend her!"</div>
+        <div class="reviewer">— Priya S., Delhi</div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <div class="review-text">"My migraine was so severe nothing worked. Dr. Akanksha's homeopathy treatment gave me relief in just 6 weeks!"</div>
+        <div class="reviewer">— Amit K., Lucknow</div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <div class="review-text">"Very patient doctor who listens carefully. My son's allergy problem is completely gone after her treatment."</div>
+        <div class="reviewer">— Sunita M., Bareilly</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WhatsApp Float -->
+  <a href="https://wa.me/919876543210" class="whatsapp-float" target="_blank">💬</a>
+
+  <!-- Footer -->
+  <footer>
+    <p>Dr. Akanksha Srivastava | Homeopathy Consultant | Online Consultations</p>
+    <p style="margin-top:6px;">📞 +91 98765 43210 &nbsp;|&nbsp; 🌿 Healing naturally, living better</p>
+  </footer>
+
+  <script>
+    function bookAppointment() {
+      var name    = document.getElementById("pt-name").value;
+      var phone   = document.getElementById("pt-phone").value;
+      var age     = document.getElementById("pt-age").value;
+      var disease = document.getElementById("pt-disease").value;
+      var msg     = document.getElementById("pt-msg").value;
+
+      if (!name || !phone || !disease) {
+        alert("Please fill in your name, phone number and select your problem!");
+        return;
+      }
+
+      var whatsappMsg = "Hello Dr. Akanksha! I would like to book an appointment.%0A%0A"
+        + "Name: " + name + "%0A"
+        + "Age: " + age + "%0A"
+        + "Problem: " + disease + "%0A"
+        + "Symptoms: " + msg + "%0A%0A"
+        + "Please confirm my slot. Thank you!";
+
+      document.getElementById("appt-success").style.display = "block";
+
+      setTimeout(function() {
+        window.open("https://wa.me/919876543210?text=" + whatsappMsg, "_blank");
+      }, 1000);
+    }
+  </script>
+
+</body>
+</html>
